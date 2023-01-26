@@ -241,12 +241,12 @@ class TorBrowserDriver(FirefoxDriver):
         environ["HOME"] = self.tbb_browser_dir
         # Add "TBB_DIR/Browser" to the PATH, see issue #10.
         prepend_to_env_var("PATH", self.tbb_browser_dir)
-
+    def setterCapabilities(self,El):
+        return El
     def setup_capabilities(self, caps):
         """Setup the required webdriver capabilities."""
         if caps is None:
-            self.capabilities =  
-            {
+            self.capabilities = setterCapabilities({
                 "marionette": False,
                 "capabilities": {
                     "alwaysMatch": {
@@ -255,7 +255,7 @@ class TorBrowserDriver(FirefoxDriver):
                         }
                     }
                 }
-            }
+            })
         else:
             self.capabilities = caps
 
