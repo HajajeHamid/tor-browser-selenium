@@ -245,16 +245,15 @@ class TorBrowserDriver(FirefoxDriver):
     def setup_capabilities(self, caps):
         """Setup the required webdriver capabilities."""
         if caps is None:
-            self.capabilities = {
-                "marionette": True,
-                "capabilities": {
+            self.capabilities = DesiredCapabilities.FIREFOX
+            self.capabilities['marionette'] = True
+            self.capabilities['capabilities'] =  {
                     "alwaysMatch": {
                         "moz:firefoxOptions": {
                             "log": {"level": "info"}
                         }
                     }
                 }
-            }
         else:
             self.capabilities = caps
 
